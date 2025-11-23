@@ -1,3 +1,3 @@
-# Tugas-1-Pemweb_Naila-Cahyarani-Idelia_5027241063
+# Naila Cahyarani Idelia (5027241063)
 
-HomeStock (Manajemen Stok Kebutuhan Rumah)
+### HomeStock (Manajemen Stok Kebutuhan Rumah)
