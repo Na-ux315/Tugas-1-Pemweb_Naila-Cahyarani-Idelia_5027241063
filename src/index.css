@@ -1,0 +1,202 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* HomeStock Design System - Soft Blue × Clean White */
+
+@layer base {
+  :root {
+    /* Main palette - Clean White */
+    --background: 210 40% 98%;
+    --foreground: 215 25% 20%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 215 25% 20%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 215 25% 20%;
+
+    /* Primary - Soft Blue */
+    --primary: 210 80% 55%;
+    --primary-foreground: 0 0% 100%;
+
+    /* Secondary - Light Blue Gray */
+    --secondary: 210 30% 95%;
+    --secondary-foreground: 215 25% 25%;
+
+    /* Muted - Soft gray with blue tint */
+    --muted: 210 20% 94%;
+    --muted-foreground: 215 15% 50%;
+
+    /* Accent - Sky Blue */
+    --accent: 200 90% 50%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 70% 55%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 210 20% 90%;
+    --input: 210 20% 90%;
+    --ring: 210 80% 55%;
+
+    --radius: 0.75rem;
+
+    /* Custom tokens for HomeStock */
+    --success: 160 60% 45%;
+    --warning: 40 95% 50%;
+    --danger: 0 70% 55%;
+    
+    /* Gradients */
+    --gradient-hero: linear-gradient(135deg, hsl(210 80% 55%) 0%, hsl(200 90% 60%) 100%);
+    --gradient-card: linear-gradient(180deg, hsl(0 0% 100%) 0%, hsl(210 30% 98%) 100%);
+    --gradient-soft: linear-gradient(135deg, hsl(210 40% 98%) 0%, hsl(200 30% 95%) 100%);
+
+    /* Shadows */
+    --shadow-sm: 0 1px 2px hsl(215 25% 20% / 0.04);
+    --shadow-md: 0 4px 12px hsl(215 25% 20% / 0.06);
+    --shadow-lg: 0 8px 24px hsl(215 25% 20% / 0.1);
+    --shadow-glow: 0 0 20px hsl(210 80% 55% / 0.2);
+
+    --sidebar-background: 0 0% 100%;
+    --sidebar-foreground: 215 25% 25%;
+    --sidebar-primary: 210 80% 55%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 210 30% 95%;
+    --sidebar-accent-foreground: 215 25% 25%;
+    --sidebar-border: 210 20% 90%;
+    --sidebar-ring: 210 80% 55%;
+  }
+
+  .dark {
+    --background: 215 30% 10%;
+    --foreground: 210 20% 95%;
+
+    --card: 215 30% 12%;
+    --card-foreground: 210 20% 95%;
+
+    --popover: 215 30% 12%;
+    --popover-foreground: 210 20% 95%;
+
+    --primary: 210 80% 60%;
+    --primary-foreground: 215 30% 10%;
+
+    --secondary: 215 25% 18%;
+    --secondary-foreground: 210 20% 90%;
+
+    --muted: 215 25% 20%;
+    --muted-foreground: 210 15% 60%;
+
+    --accent: 200 90% 55%;
+    --accent-foreground: 215 30% 10%;
+
+    --destructive: 0 65% 55%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 215 25% 22%;
+    --input: 215 25% 22%;
+    --ring: 210 80% 60%;
+
+    --sidebar-background: 215 30% 10%;
+    --sidebar-foreground: 210 20% 90%;
+    --sidebar-primary: 210 80% 60%;
+    --sidebar-primary-foreground: 215 30% 10%;
+    --sidebar-accent: 215 25% 18%;
+    --sidebar-accent-foreground: 210 20% 90%;
+    --sidebar-border: 215 25% 22%;
+    --sidebar-ring: 210 80% 60%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-semibold tracking-tight;
+  }
+}
+
+@layer components {
+  .card-hover {
+    @apply transition-all duration-300 hover:shadow-lg hover:-translate-y-1;
+  }
+
+  .btn-glow {
+    @apply relative overflow-hidden;
+  }
+
+  .btn-glow::after {
+    content: '';
+    @apply absolute inset-0 opacity-0 transition-opacity duration-300;
+    background: var(--shadow-glow);
+  }
+
+  .btn-glow:hover::after {
+    @apply opacity-100;
+  }
+
+  .stock-low {
+    @apply bg-destructive/10 text-destructive border-destructive/20;
+  }
+
+  .stock-medium {
+    @apply bg-warning/10 text-warning border-warning/20;
+  }
+
+  .stock-good {
+    @apply bg-primary/10 text-primary border-primary/20;
+  }
+
+  .glass-card {
+    @apply backdrop-blur-md bg-card/80 border border-border/50;
+  }
+}
+
+@layer utilities {
+  .animate-fade-in {
+    animation: fadeIn 0.5s ease-out forwards;
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.5s ease-out forwards;
+  }
+
+  .animate-scale-in {
+    animation: scaleIn 0.3s ease-out forwards;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes slideUp {
+    from { 
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to { 
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes scaleIn {
+    from { 
+      opacity: 0;
+      transform: scale(0.95);
+    }
+    to { 
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+}
